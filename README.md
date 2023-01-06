@@ -1,4 +1,8 @@
 ## Polynomials
+### To make the program work correctly make sure to do:
+```
+$pip install matplotlib
+```
 The program takes the list of coefficients as an argument and performs different functions on it. In particular,
  1) Converts an expanded polynomial to a factored polynomial.
 
