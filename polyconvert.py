@@ -1,3 +1,6 @@
+'''Function takes a list containing polynomial roots and returns a list containing polynomial coefficients.
+There are many polynomials with the same roots. However, this function returns one of them, 
+more specifically, one that has the first coefficient equal to 1'''
 def polyconvert(poly):
     if len(poly) == 1:
         return [1, -poly[0]]
