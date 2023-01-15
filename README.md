@@ -1,7 +1,8 @@
 ## Polynomials
 ### To make the program work correctly make sure to do:
 ```
-$pip install matplotlib
+pip install matplotlib
+pip install numpy
 ```
 The program takes the list of coefficients as an argument and performs different functions on it. In particular,
 
