@@ -4,7 +4,10 @@
 $pip install matplotlib
 ```
 The program takes the list of coefficients as an argument and performs different functions on it. In particular,
- 1) Converts an expanded polynomial to a factored polynomial.
+
+ 1) Converts a factored polynomial to an expanded polynomial. Function takes a list containing polynomial roots and returns a list containing polynomial coefficients.
+ There are many polynomials with the same roots. However, this function returns one of them, 
+ more specifically, one that has the first coefficient equal to 1.
 
  2) Generates a graph of a polynomial in a specified range.
 
