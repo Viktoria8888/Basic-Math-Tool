@@ -1,8 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.widgets import TextBox
-START = -20
-END = 20
+
+START = int(input("start:"))
+END = int(input("end:"))
 STEP = 100  
 fig, ax = plt.subplots()
 fig.subplots_adjust(bottom=0.2)
