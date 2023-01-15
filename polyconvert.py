@@ -2,6 +2,8 @@
 There are many polynomials with the same roots. However, this function returns one of them, 
 more specifically, one that has the first coefficient equal to 1'''
 def polyconvert(poly):
+    if len(poly) == 0:
+        return
     if len(poly) == 1:
         return [1, -poly[0]]
     res = []
@@ -17,4 +19,4 @@ def polyconvert(poly):
             res[j] = res[j] + (-poly[i] * help[j-1])
         help[:] = res[:]
     return res
- 
+print(polyconvert([]))
