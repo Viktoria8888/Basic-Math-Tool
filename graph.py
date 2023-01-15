@@ -1,21 +1,34 @@
 import numpy as np
-from matplotlib import pyplot as plt
-plt.figure()
+import matplotlib.pyplot as plt
+from matplotlib.widgets import TextBox
+START = -20
+END = 20
+STEP = 100  
+fig, ax = plt.subplots()
+fig.subplots_adjust(bottom=0.2)
 
-def PolyCoefficients(x, coeffs):
-    """ Returns a polynomial for ``x`` values for the ``coeffs`` provided.
+x = np.linspace(START,END,STEP)
+l, = ax.plot(x, np.zeros_like(x), lw=2)
 
-    The coefficients must be in ascending order (``x**0`` to ``x**o``).
+
+def submit(expression):
     """
-    o = len(coeffs)
-    print(f'# This is a polynomial of order {o}.')
-    y = 0
-    for i in range(o):
-        y += coeffs[i]*x**i
-    return y
+    Update the plotted function to the new math *expression*.
 
-x = np.linspace(0, 9, 10)
-coeffs = [1, 2, 3, 4, 5]
+    *expression* is a string using "x" as its independent variable, e.g.
+    "x ** 3".
+    """
+    ydata = eval(expression)
+    l.set_ydata(ydata)
+    ax.relim()
+    ax.autoscale_view()
+    plt.draw()
 
-plt.plot(x, PolyCoefficients(x, coeffs))
+
+axbox = fig.add_axes([0.1, 0.05, 0.8, 0.075])
+ax.spines['left'].set_position(('data', 0))
+text_box = TextBox(axbox, "Evaluate")
+text_box.on_submit(submit)
+text_box.set_val("x ** 2")  # Trigger `submit` with the initial string.
+
 plt.show()
