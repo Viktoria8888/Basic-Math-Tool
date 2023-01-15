@@ -8,10 +8,12 @@ def polyconvert(poly):
         return [1, -poly[0]]
     res = []
     help = []
+    #Special code for quadratic polynomials. Higher degree polynomials are counted based on this.
     res.append(1)
     res.append(-(poly[0]+poly[1])) 
     res.append(poly[0]*poly[1])
     help[:] = res[:]
+
 
     for i in range(2,len(poly)):
         res.append(-poly[i]*res[-1])
@@ -19,4 +21,3 @@ def polyconvert(poly):
             res[j] = res[j] + (-poly[i] * help[j-1])
         help[:] = res[:]
     return res
-print(polyconvert([]))
