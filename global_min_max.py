@@ -34,4 +34,16 @@ def derivative(poly):
 
 def roots(poly):  ### Returns polynomial's roots, doesnt return imaginary
     return [i.real for i in np.roots(poly) if np.isreal(i)] 
+    
+
+### test ###
+
+a = [0,1,6,3]
+b = [-4,2,-6,1]
+c = [1]
+d = [5,3,1]
+
+for i in (a,b,c,d):
+    extremes = max_min(i) 
+    print(f"Minimum: {extremes[0]}   Maksimum: {extremes[1]}\n")
 
