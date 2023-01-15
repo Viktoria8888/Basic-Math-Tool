@@ -14,7 +14,7 @@ def max_min(poly):
     potential_values = [value(poly,x) for x in deriv_roots] 
 
 
-    if poly[0]<0:
+    if poly[0]<0:		
         return("-infinity",max(potential_values))
     return(min(potential_values),"+infinity")
 
@@ -25,7 +25,7 @@ def value(poly,x): ### Returns the polynomial's value for a given x
         res += poly[i]*(x**(len(poly)-i-1))
     return res
     
-def derivative(poly):  
+def derivative(poly): 
     degree = len(poly)-1
     res = []
     for i in range(degree):
@@ -36,14 +36,4 @@ def roots(poly):  ### Returns polynomial's roots, doesnt return imaginary
     return [i.real for i in np.roots(poly) if np.isreal(i)] 
     
 
-### test ###
-
-a = [0,1,6,3]
-b = [-4,2,-6,1]
-c = [1]
-d = [5,3,1]
-
-for i in (a,b,c,d):
-    extremes = max_min(i) 
-    print(f"Minimum: {extremes[0]}   Maksimum: {extremes[1]}\n")
 
