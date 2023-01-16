@@ -25,10 +25,3 @@ def miejsca_zerowe(wielomian,od,do,dokladnosc):
     return koncowywynik
 
 
-w = [1,-3,-29,3,28,0] # dane testowe
-k = [1,-2,-1,2] # dane testowe
-t = [1,0,-4] # dane testowe
-
-print((miejsca_zerowe(k,-8,8,0.00001)))
-
-
