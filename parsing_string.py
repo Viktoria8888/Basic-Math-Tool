@@ -164,6 +164,9 @@ def funkcja5(tekst):
                         lista.append(0)
                 else:
                     return ('błąd parsowania', [])
+                    
+            elif len(element) == 2:
+            	return ('błąd parsowania', [])
 
 
         elif element[0] == '(':
