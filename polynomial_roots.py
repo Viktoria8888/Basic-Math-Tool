@@ -18,9 +18,9 @@ def miejsca_zerowe(wielomian,od,do,dokladnosc):
     for i in range(1,len(wynik)): # odfiltrowanie wynikow rozniacych sie od siebie o okreslone przyblizenie
         if abs(wynik[i] - wynik[i-1])>epsilon:
             koncowywynik.append(wynik[i-1])
-
-    if abs(wynik[len(wynik)-1] - wynik[len(wynik)-2]) > epsilon: # przypadek w ktorym ostatnia liczba w talicy wynik bedzie dobrym pierwiastkiem
-        koncowywynik.append(wynik[len(wynik)-1])
+    if len(wynik) > 1:
+        if abs(wynik[len(wynik)-1] - wynik[len(wynik)-2]) > epsilon: # przypadek w ktorym ostatnia liczba w talicy wynik bedzie dobrym pierwiastkiem
+            koncowywynik.append(wynik[len(wynik)-1])
 
     return koncowywynik
 
