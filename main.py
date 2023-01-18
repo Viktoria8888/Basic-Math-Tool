@@ -76,7 +76,7 @@ while leave_check != 0:
         os.system('clear')
         
     elif user_input == "2":
-        exec(open("ProjectPWI/graph.py").read())
+        exec(open("graph.py").read())
         continue_check = input("\nIf you want to exit type 0, otherwise type any sign: ")
         if continue_check == "0":
             break
