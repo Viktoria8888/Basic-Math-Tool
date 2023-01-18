@@ -1,4 +1,4 @@
-def funkcja5(tekst):
+def parsing_string(tekst):
     wspolczynnikowo = False
     pierwiastkowo = False
     lista = []
@@ -167,7 +167,6 @@ def funkcja5(tekst):
                     
             elif len(element) == 2:
             	return ('błąd parsowania', [])
-
 
         elif element[0] == '(':
             pierwiastkowo = True
