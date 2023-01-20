@@ -21,10 +21,10 @@ The program takes different arguments depending on chosen function in the termin
  - ("pierwiastkowa", lista), or
  - ("błąd parsowania", [])
  where lista represents the given polynomial in the given way.
- The string given as a parameter should be in the form of space-separated monomials in descending order of the degree of the monomial, or parentheses raised to a certain power separated by a space. 
+ The string given as a parameter should be in the form of monomials in descending order of the degree of the monomial, or parentheses raised to a certain power. 
  The ^ character should be used as a power symbol.
  For example:
- - correct input: '(x-7) x^3 (x+2)^3 (x+6)^2', '2x^6 -x^4 +13x^3 +278x^2 +9'
- - incorrect input: '2x-3', 'x^7 -(x+2)', '(x-1)(x+9)'
+ - correct input: '(x-7)x^3(x+2)^3(x+6)^2', '2x^6-x^4+13x^3+278x^2+9'
+ - incorrect input: '(2x-3)(x-1)', 'x^7 -(x+2)', '(x-1)(x+9) ^4'
  For monomials of the form x raised to a certain power, the function returns the factored representation. 
  For example, for input 'x^3' the function returns ("współczynnikowa", [0, 0, 0]) rather than ("pierwiastkowa", [1, 0, 0, 0]).
