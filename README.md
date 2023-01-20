@@ -4,19 +4,19 @@
 pip install matplotlib
 pip install numpy
 ```
-The program takes the list of coefficients as an argument and performs different functions on it. In particular,
+The program takes different arguments depending on chosen function in the terminal:
 
  1) Converts a factored polynomial to an expanded polynomial. Function takes a list containing polynomial roots and returns a list containing polynomial coefficients.
  There are many polynomials with the same roots. However, this function returns one of them, 
  more specifically, one that has the first coefficient equal to 1.
 
- 2) Generates a graph of a polynomial in a specified range.
+ 2) Generates a graph of a polynomial in a specified range based on user input from GUI.  
 
  3) Determines the maximum and minimum global values.
 
  4) Returns all the polynomial roots in expanded form within a given range and with a given approximation.
 
- 5) A function that parses a string, given as a parameter, as a polynomial in one of the representations and returns a pair of one of three forms:
+ 5) Opperates as a function that parses a string, given as a parameter, as a polynomial in one of the representations and returns a pair of one of three forms:
  - ("współczynnikowa", lista),
  - ("pierwiastkowa", lista), or
  - ("błąd parsowania", [])
