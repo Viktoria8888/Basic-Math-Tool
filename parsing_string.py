@@ -1,4 +1,64 @@
+def aux(tekst):
+    lista_wyrazow = []
+    wyraz = ''
+    if '(' in tekst:
+        i = 0
+        otwarte = 0
+        while i < len(tekst):
+            if tekst[i] == '(':
+                if wyraz != '':
+                    lista_wyrazow.append(wyraz)
+                wyraz = '('
+                otwarte += 1
+            elif tekst[i] == ')':
+                wyraz += ')'
+                if i < len(tekst) - 1:
+                    if tekst[i+1] =='x':
+                        lista_wyrazow.append(wyraz)
+                        i += 1
+                        wyraz = tekst[i]
+                        i += 1
+                        continue
+                    if tekst[i+1] == '^':
+                        i += 1
+                        wyraz += tekst[i]
+                        i += 1
+                        while i < len(tekst):
+                            if tekst[i] == 'x':
+                                lista_wyrazow.append(wyraz)
+                                wyraz = 'x'
+                                break
+                            elif tekst[i] == '(':
+                                lista_wyrazow.append(wyraz)
+                                wyraz = '('
+                                break
+                            wyraz += tekst[i]
+                            i += 1
+                else:
+                    lista_wyrazow.append(wyraz)
+                    wyraz = ''
+                    otwarte -= 1
+            else:
+                wyraz += tekst[i]
+            i += 1
+        lista_wyrazow.append(wyraz)
+        return ' '.join(lista_wyrazow)
+    else:
+        i = 0
+        while i < len(tekst):
+            if tekst[i] in ['+', '-']:
+                lista_wyrazow.append(wyraz)
+                wyraz = tekst[i]
+                i += 1
+                continue
+            wyraz += tekst[i]
+            i += 1
+        lista_wyrazow.append(wyraz)
+        return ' '.join(lista_wyrazow)
+    
+
 def parsing_string(tekst):
+    tekst = aux(tekst1)
     wspolczynnikowo = False
     pierwiastkowo = False
     lista = []
