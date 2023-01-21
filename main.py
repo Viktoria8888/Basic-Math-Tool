@@ -102,7 +102,8 @@ while leave_check != 0:
         os.system('cls')
         os.system('clear')
         polynomial = parsing_string(poly)[1]
-        print(f"Minimum and maximum global values are: {max_min(poly)}")
+        mini_maks = max_min(polynomial)
+        print(f"\nGlobal minimum: {mini_maks[0]} Global maximum: {mini_maks[1]}")
         continue_check = input("\nIf you want to exit type 0, otherwise type any sign: ")
         if continue_check == "0":
             break
