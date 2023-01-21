@@ -10,13 +10,12 @@ def max_min(poly):
     if len(poly) == 1:
         return(poly[0],poly[0])
 
-    deriv_roots = roots(derivative(poly)) ### Finding roots of the derivative to determine potential max/min
-    potential_values = [value(poly,x) for x in deriv_roots] 
-
+ deriv_roots = roots(derivative(poly)) ### Finding roots of the derivative to determine potential max/min
+    potential_values = [value(poly,x) for x in deriv_roots] ### List of polynomal's values at stationary points
 
     if poly[0]<0:		
-        return("-infinity",max(potential_values))
-    return(min(potential_values),"+infinity")
+        return("-infinity",round(max(potential_values),3))
+    return(round(min(potential_values),3),"+infinity")
 
 
 def value(poly,x): ### Returns the polynomial's value for a given x
@@ -32,8 +31,6 @@ def derivative(poly):
         res.append(poly[i]*(degree-i))
     return res
 
-def roots(poly):  ### Returns polynomial's roots (doesnt return imaginary)
+def roots(poly):  ### Returns polynomial's roots (excludes imaginary)
     return [i.real for i in np.roots(poly) if np.isreal(i)] 
-    
-
 
