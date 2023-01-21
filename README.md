@@ -12,7 +12,7 @@ The program takes different arguments depending on chosen function in the termin
 
  2) Generates a graph of a polynomial in a specified range based on user input from GUI.  
 
- 3) Determines the maximum and minimum global values.
+ 3) Determines the maximum and minimum global values (rounded to 3 decimal places).
 
  4) Returns all the polynomial roots in expanded form within a given range and with a given approximation.
 
