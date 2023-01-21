@@ -32,9 +32,10 @@ def sub_menu(f):
 def	funkcja1():
 	clear()
 	try:
-		n = int(input("Enter the number of polynomial roots: "))
-		if n <= 0:
-			funkcja1()
+		n = float(input("Enter the number of polynomial roots: "))
+		if n <= 0 or n != int(n):
+			return funkcja1()
+		n = int(n)
 	except:
 		return funkcja1()
 	roots = []
