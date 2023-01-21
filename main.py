@@ -4,151 +4,107 @@ from polynomial_roots import *
 from global_min_max import *
 import os
 
-os.system('cls')
-os.system('clear')
-leave_check = 1
-while leave_check != 0:
-    print("Hello,\nWhich function would you like to run?\n")
-    print("1. Convert a factored polynomial to an expanded polynomial.\n2. Generate a graph of a polynomial in a specified range.\n3. Determine the maximum and minimum global values.\n4. Return all the polynomial roots in expanded form within a given range and with a given approximation.\n")
-    user_input = input("Type number of function(or type 0 if you want to exit):\n")
-    user_input = user_input.replace(" ", "")
-    user_input = user_input.replace(".", "")
-    if user_input != "1" and user_input != "2" and user_input != "3" and user_input != "4" and user_input != "0":
-        input_check = False
-        while input_check == False:
-            os.system('cls')
-            os.system('clear')
-            print("Hello,\nWhich function would you like to run?")
-            print("1. Convert a factored polynomial to an expanded polynomial.\n2. Generate a graph of a polynomial in a specified range.\n3. Determine the maximum and minimum global values.\n4. Return all the polynomial roots in expanded form within a given range and with a given approximation.\n")
+def clear():
+	os.system('cls')
+	os.system('clear')
 
-            user_input = input("Wrong input! Type function number again(or type 0 if you want to exit).\n")
-            user_input = user_input.replace(" ", "")
-            user_input = user_input.replace(".", "")
-            if user_input != "1" and user_input != "2" and user_input != "3" and user_input != "4" and user_input != "0":
-                input_check = False
-            else:
-                input_check = True
+def main_menu(): 
+	funkcje = {"1":funkcja1,"0":clear,"2":funkcja2,"3":funkcja3,"4":funkcja4}
+	clear()
+	print("Which program would you like to run?\n")
+	print("[1] Convert a factored polynomial to an expanded polynomial\n[2] Generate graphs of polynomials in a specified range\n[3] Determine the maximum and minimum global values\n[4] Find polynomial roots in expanded form within a given range and specified approximation\n[0] Exit")
+	user_input = input("\nEnter the number: ").replace(" ","")
+	if user_input in funkcje:
+		return funkcje[user_input]()
+	return main_menu()
 
-    os.system('cls')
-    os.system('clear')
+def sub_menu(f):
+	temp_dict = {"1": main_menu, "2":f, "0":clear}
+	while True:
+		print("[1] Main menu\n[2] Use the function again\n[0] Exit\n")
+		choice = input("Enter the number: ").replace(" ","")
+		if choice in temp_dict:
+			break
+		else:
+			clear()
+	return temp_dict[choice]()
 
-    if user_input == "1":
-        n = int(input("Type a number of polynomial roots.\n"))
-        roots = []
-        for i in range(0,n):
-            num_check = False
-            dot_ind = 0
-            user_arg = input("Type polynomial root:\n")
-            if user_arg.isnumeric() == True or (user_arg[0] == "-" and      user_arg[1:].isnumeric() == True):
-                    roots.append(int(user_arg))
-                    num_check = True
-            elif (user_arg[0].isnumeric() or user_arg[0] == "-") and user_arg.count(".") == 1:
-                    dot_ind = 0
-                    for i in range(0,len(user_arg)-1):
-                        if user_arg[i] == ".":
-                            dot_ind = i
-                            break
-                    if user_arg[(dot_ind + 1):].isnumeric() == True:
-                        roots.append(float(user_arg))
-                        num_check = True
+def	funkcja1():
+	clear()
+	try:
+		n = int(input("Enter the number of polynomial roots: "))
+		if n <= 0:
+			funkcja1()
+	except:
+		return funkcja1()
+	roots = []
+	while n>0:
+		usr_root = input("Enter the root: ")
+		try:
+			float(usr_root)
+			roots.append(float(usr_root))
+			n -= 1
+		except:
+			print("Incorrect input")
+	clear()
+	print(f"Basing on the roots, the expanded polynomial is:\n{[round(i,5) for i in polyconvert(roots)]}\n")
+	return sub_menu(funkcja1)
 
-            while num_check == False:
-                user_arg = input("Wrong! Type Root again:\n")
-                if user_arg.isnumeric() == True or (user_arg[0] == "-" and      user_arg[1:].isnumeric() == True):
-                    roots.append(int(user_arg))
-                    num_check = True
-                elif (user_arg[0].isnumeric() or user_arg[0] == "-") and user_arg.count(".") == 1:
-                    dot_ind = 0
-                    for i in range(0,len(user_arg)-1):
-                        if user_arg[i] == ".":
-                            dot_ind = i
-                            break
-                    if user_arg[(dot_ind + 1):].isnumeric() == True:
-                        roots.append(float(user_arg))
-                        num_check = True
-        os.system('cls')
-        os.system('clear')
-        print("Based on your roots, expanded polynomial is:\n",polyconvert(roots))
-        continue_check = input("\nIf you want to exit type 0, otherwise type any sign: ")
-        if continue_check == "0":
-            break
-        os.system('cls')
-        os.system('clear')
-        
-    elif user_input == "2":
-        exec(open("graph.py").read())
-        continue_check = input("\nIf you want to exit type 0, otherwise type any sign: ")
-        if continue_check == "0":
-            break
-        os.system('cls')
-        os.system('clear')
+def funkcja2():
+	clear()
+	try:
+		exec(open("graph.py").read(), globals())
+	except:
+		return funkcja2()
+	return sub_menu(funkcja2)
 
-    elif user_input == "3":
-        print("Polynomial should be in the form of space-separated monomials in descending order of the degree of the monomial, or parentheses raised to a certain power separated by a space. The ^ character should be used as a power symbol. For example:\n\nCorrect input: '(x-7) x^3 (x+2)^3 (x+6)^2', '2x^6 -x^4 +13x^3 +278x^2 +9'\nIncorrect input: '2x-3', 'x^7 -(x+2)', '(x-1)(x+9)'\n")
-        poly = input("Type polynomial:\n")
-        if parsing_string(poly)[0] == "błąd parsowania":
-            check = False
-        else:
-            check = True
-        while check == False:
-            os.system('cls')
-            os.system('clear')
-            print("Polynomial should be in the form of space-separated monomials in descending order of the degree of the monomial. The ^ character should be used as a power symbol. For example:\n\nCorrect input: '2x^6 -x^4 +13x^3 +278x^2 +9'\nIncorrect input: '2x-3', 'x^7 -(x+2)', '(x-1)(x+9)'\n")
-            poly = input("Incorrect input. Type polynomial again:\n")
-            if parsing_string(poly)[0] == "błąd parsowania":
-                check = False
-            else:
-                check = True
-        os.system('cls')
-        os.system('clear')
-        polynomial = parsing_string(poly)[1]
-        mini_maks = max_min(polynomial)
-        print(f"\nGlobal minimum: {mini_maks[0]} Global maximum: {mini_maks[1]}")
-        continue_check = input("\nIf you want to exit type 0, otherwise type any sign: ")
-        if continue_check == "0":
-            break
-        os.system('cls')
-        os.system('clear')
+def funkcja3(n=0):
+	clear()
+	print("Individual monomials should be sorted in descending order; from the highest exponent to the lowest. The '^' character should be used as a power symbol.\nCorrect input: '2x^4-3', 'x^7-x^2+2', 'x^5+x^3-x+9'\n")
+	if n == 1:
+		print("Incorrect input")
+	poly = input("Enter the polynomial:\n")
+	pars = parsing_string(poly)
+	if pars[0] == "błąd parsowania":
+		return funkcja3(1)
+	mini_maxi = max_min(pars[1])
+	clear()
+	print(f"{poly}\nGlobal minimum: {mini_maxi[0]} | Global maximum: {mini_maxi[1]}\n")
+	return sub_menu(funkcja3)
 
-    elif user_input == "4":
-        print("Polynomial should be in the form of space-separated monomials in descending order of the degree of the monomial, or parentheses raised to a certain power separated by a space. The ^ character should be used as a power symbol. For example:\n\nCorrect input: '(x-7) x^3 (x+2)^3 (x+6)^2', '2x^6 -x^4 +13x^3 +278x^2 +9'\nIncorrect input: '2x-3', 'x^7 -(x+2)', '(x-1)(x+9)'\n")
-        poly = input("Type polynomial:\n")
-        if parsing_string(poly)[0] == "błąd parsowania":
-            check = False
-        else:
-            check = True
-        while check == False:
-            os.system('cls')
-            os.system('clear')
-            print("Polynomial should be in the form of space-separated monomials in descending order of the degree of the monomial. The ^ character should be used as a power symbol. For example:\n\nCorrect input: '2x^6 -x^4 +13x^3 +278x^2 +9'\nIncorrect input: '2x-3', 'x^7 -(x+2)', '(x-1)(x+9)'\n")
-            poly = input("Incorrect input. Type polynomial again:\n")
-            if parsing_string(poly)[0] == "błąd parsowania":
-                check = False
-            else:
-                check = True
-        poly = parsing_string(poly)[1]
-        os.system('cls')
-        os.system('clear')
-        print("Tell me what range would you like to have.\n\n")
-        range_from = int(input("From: "))
-        range_to = int(input("To: "))
-        os.system('cls')
-        os.system('clear')
-        print("Tell me what approximation would you like to have.\n\n")
-        approx = float(input("Approximation: "))
-        os.system('cls')
-        os.system('clear')
+def funkcja4(n=0):
+	clear()
+	print("Individual monomials should be sorted in descending order; from the highest exponent to the lowest. The '^' character should be used as a power symbol. \nCorrect input: '2x^4-3', 'x^7-x^2+2', 'x^5+x^3-x+9'\n")
+	if n==1:
+		print("Incorrect input")
+	poly = input("Enter the polynomial:\n")
+	if parsing_string(poly)[0] == "błąd parsowania":
+		return funkcja4(1)
+	pars = parsing_string(poly)[1]
+	clear()
+	while True:
+		print("Enter the range you would like to search for roots in.\n")
+		bot = input("Bottom endpoint of the range: ")
+		top = input("Top endpoint of the range: ")
+		try:
+			bot, top = float(bot), float(top)
+			break
+		except:
+			clear()
+			print("Incorrect input")
+	if top < bot:
+		bot,top = top,bot
+	clear()
+	while True:
+		approx = input("Enter the approximation: ")
+		try:
+			approx = float(approx)
+			clear()
+			print(f'{poly}\nRoots: {miejsca_zerowe(pars, bot, top, approx)}\n')
+			break
+		except:
+			clear()
+			print("Incorrect input")
+	sub_menu(funkcja4)
 
-        print(f"Roots: {miejsca_zerowe(poly, range_from, range_to, approx)}")
-        continue_check = input("\nIf you want to exit type 0, otherwise type any sign: ")
-        if continue_check == "0":
-            break
-        os.system('cls')
-        os.system('clear')
-    elif user_input == "0":
-        leave_check = 0
-
-
-
-
-
+main_menu()
