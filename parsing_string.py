@@ -58,7 +58,7 @@ def aux(tekst):
     
 
 def parsing_string(tekst):
-    tekst = aux(tekst1)
+    tekst = aux(tekst)
     wspolczynnikowo = False
     pierwiastkowo = False
     lista = []
