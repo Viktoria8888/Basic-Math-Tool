@@ -2,13 +2,13 @@ import numpy as np
 
 def max_min(poly):
 
-    while poly[0] == 0:
+    while poly[0] == 0 and len(poly)!=1:
         poly = poly[1:]
-
+    if len(poly) == 1:
+            return(poly[0],poly[0])
     if len(poly)%2 == 0:         
         return("-infinity","+infinity")        
-    if len(poly) == 1:
-        return(poly[0],poly[0])
+
 
  deriv_roots = roots(derivative(poly)) ### Finding roots of the derivative to determine potential max/min
     potential_values = [value(poly,x) for x in deriv_roots] ### List of polynomal's values at stationary points
