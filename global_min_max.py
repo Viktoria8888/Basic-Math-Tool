@@ -10,7 +10,7 @@ def max_min(poly):
         return("-infinity","+infinity")        
 
 
- deriv_roots = roots(derivative(poly)) ### Finding roots of the derivative to determine potential max/min
+    deriv_roots = roots(derivative(poly)) ### Finding roots of the derivative to determine potential max/min
     potential_values = [value(poly,x) for x in deriv_roots] ### List of polynomal's values at stationary points
 
     if poly[0]<0:		
