@@ -58,6 +58,8 @@ def aux(tekst):
     
 
 def parsing_string(tekst):
+    if tekst == '0':
+        return ('pierwiastkowo', [0])
     tekst = aux(tekst)
     wspolczynnikowo = False
     pierwiastkowo = False
