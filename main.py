@@ -1,7 +1,7 @@
-from parsing_string import *
-from polyconvert import *
-from polynomial_roots import *
-from global_min_max import *
+from functions.parsing_string import *
+from functions.polyconvert import *
+from functions.polynomial_roots import *
+from functions.global_min_max import *
 import os
 
 def clear():
@@ -54,7 +54,7 @@ def	funkcja1():
 def funkcja2():
 	clear()
 	try:
-		exec(open("graph.py").read(), globals())
+		exec(open("functions/graph.py").read(), globals())
 	except:
 		return funkcja2()
 	return sub_menu(funkcja2)
