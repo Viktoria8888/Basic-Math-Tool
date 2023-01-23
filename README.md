@@ -16,7 +16,7 @@ The program takes different arguments depending on chosen function in the termin
 
  4) Returns all the polynomial roots in expanded form within a given range and with a given approximation.
 
- 5) Opperates as a function that parses a string, given as a parameter, as a polynomial in one of the representations and returns a pair of one of three forms:
+ 5) Operates as a function that parses a string, given as a parameter, as a polynomial in one of the representations and returns a pair of one of three forms:
  - ("współczynnikowa", lista),
  - ("pierwiastkowa", lista), or
  - ("błąd parsowania", [])
