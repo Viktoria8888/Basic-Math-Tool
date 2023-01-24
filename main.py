@@ -31,7 +31,7 @@ def sub_menu(f):
 
 def	funkcja1(n=0):
 	clear()
-	print("Factored polynomials: x variable inside each parentheses should come before the constant and have no coefficient. The factored polynomial should be written as a product of first degree polynomials only.\nCorrect input: '(x-3)^3(x+1)', '(x-7)x^3(x+2)^3(x+6)^2' | Incorrect input: '(x-7)(x^2+x-1)', '2(x-1)(x+1)'\n")
+	print("Product of roots as a factored polynomial: x variable inside each parentheses should come before the constant and have no coefficient. The factored polynomial should be written as a product of first degree polynomials only.\nCorrect input: '(x-3)^3(x+1)', '(x-7)x^3(x+2)^3(x+6)^2' | Incorrect input: '(x-7)(x^2+x-1)', '2(x-1)(x+1)'\n")
 	if n == 1:
 		print("Incorrect input")
 	poly = input("Enter the polynomial:\n")
@@ -47,7 +47,7 @@ def funkcja2():
 	try:
 		exec(open("graph.py").read(), globals())
 	except:
-		return funkcja2()
+		pass
 	return sub_menu(funkcja2)
 
 def funkcja3(n=0):
@@ -56,6 +56,8 @@ def funkcja3(n=0):
 	if n == 1:
 		print("Incorrect input")
 	poly = input("Enter the polynomial:\n")
+	if poly == "":
+		return funkcja3(1)
 	pars = parsing_string(poly)
 	if pars[0] != "współczynnikowo":
 		if pars[0] == "błąd parsowania" or pars[1] != [0]*len(pars[1]):
@@ -73,6 +75,8 @@ def funkcja4(n=0):
 		print("Incorrect input")
 	poly = input("Enter the polynomial:\n")
 	pars = parsing_string(poly)
+	if poly == "":
+		return funkcja4(1)
 	if pars[0] != "współczynnikowo":
 		if pars[0] == "błąd parsowania" or pars[1] != [0]*len(pars[1]):
 			return funkcja4(1)
@@ -106,16 +110,18 @@ def funkcja4(n=0):
 	
 def funkcja5(n=0):
 	clear()
-	print("Expanded polynomials: Individual monomials should be sorted in descending order; from the highest exponent to the lowest. The '^' character should be used as a power symbol. \nCorrect input: '2x^4-3', 'x^7-x^2+2', 'x^5+x^3-x+9' | Incorrect input: 'x+x^5' '2x - 4'\n")
-	print("Factored polynomials: x variable inside each parentheses should come before the constant and have no coefficient. The factored polynomial should be written as a product of first degree polynomials only.\nCorrect input: '(x-3)^3(x+1)', '(x-7)x^3(x+2)^3(x+6)^2' | Incorrect input: '(x-7)(x^2+x-1)', '2(x-1)(x+1)'\n")
+	print("Expanded polynomial: Individual monomials should be sorted in descending order; from the highest exponent to the lowest. The '^' character should be used as a power symbol. \nCorrect input: '2x^4-3', 'x^7-x^2+2', 'x^5+x^3-x+9' | Incorrect input: 'x+x^5' '2x - 4'\n")
+	print("Product of roots as a factored polynomial: x variable inside each parentheses should come before the constant and have no coefficient. The factored polynomial should be written as a product of first degree polynomials only.\nCorrect input: '(x-3)^3(x+1)', '(x-7)x^3(x+2)^3(x+6)^2' | Incorrect input: '(x-7)(x^2+x-1)', '2(x-1)(x+1)'\n")
 	if n ==1:
 		print("Incorrect input")
 	poly = input("Enter the polynomial:\n")
+	if poly == "":
+		return funkcja5(1)
 	pars = parsing_string(poly)
 	if pars[0] == "błąd parsowania":
 		return funkcja5(1)
 	clear()
-	print(poly,"\n",pars[0],pars[1],"\n")
+	print(poly,"\n",*pars,"\n")
 	return sub_menu(funkcja5)
 	
 	
