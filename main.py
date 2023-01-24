@@ -85,7 +85,8 @@ def funkcja4(n=0):
 	if pars[0] != "współczynnikowo":
 		if pars[0] == "błąd parsowania" or pars[1] != [0]*len(pars[1]):
 			return funkcja4(1)
-		pars = polyconvert(pars[1])
+		pars = [polyconvert(pars[1])]*2
+	pars = pars[1]
 	clear()
 	while True:
 		print("Enter the range you would like to search for roots in.\n")
