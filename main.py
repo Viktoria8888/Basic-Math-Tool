@@ -1,7 +1,7 @@
-from functions.parsing_string import *
-from functions.polyconvert import *
-from functions.polynomial_roots import *
-from functions.global_min_max import *
+from parsing_string import *
+from polyconvert import *
+from polynomial_roots import *
+from global_min_max import *
 import os
 
 def clear():
@@ -54,7 +54,7 @@ def	funkcja1():
 def funkcja2():
 	clear()
 	try:
-		exec(open("functions/graph.py").read(), globals())
+		exec(open("graph.py").read(), globals())
 	except:
 		return funkcja2()
 	return sub_menu(funkcja2)
@@ -66,8 +66,10 @@ def funkcja3(n=0):
 		print("Incorrect input")
 	poly = input("Enter the polynomial:\n")
 	pars = parsing_string(poly)
-	if pars[0] == "błąd parsowania":
-		return funkcja3(1)
+	if pars[0] != "współczynnikowo":
+		if pars[0] == "błąd parsowania" or pars[1] != [0]*len(pars[1]):
+			return funkcja3(1)
+		pars = [polyconvert(pars[1])]*2
 	mini_maxi = max_min(pars[1])
 	clear()
 	print(f"{poly}\nGlobal minimum: {mini_maxi[0]} | Global maximum: {mini_maxi[1]}\n")
@@ -79,9 +81,11 @@ def funkcja4(n=0):
 	if n==1:
 		print("Incorrect input")
 	poly = input("Enter the polynomial:\n")
-	if parsing_string(poly)[0] == "błąd parsowania":
-		return funkcja4(1)
-	pars = parsing_string(poly)[1]
+	pars = parsing_string(poly)
+	if pars[0] != "współczynnikowo":
+		if pars[0] == "błąd parsowania" or pars[1] != [0]*len(pars[1]):
+			return funkcja4(1)
+		pars = polyconvert(pars[1])
 	clear()
 	while True:
 		print("Enter the range you would like to search for roots in.\n")
