@@ -9,10 +9,10 @@ def clear():
 	os.system('clear')
 
 def main_menu(): 
-	funkcje = {"1":funkcja1,"0":clear,"2":funkcja2,"3":funkcja3,"4":funkcja4}
+	funkcje = {"1":funkcja1,"0":clear,"2":funkcja2,"3":funkcja3,"4":funkcja4,"5":funkcja5}
 	clear()
 	print("Which program would you like to run?\n")
-	print("[1] Convert a factored polynomial to an expanded polynomial\n[2] Generate graphs of polynomials in a specified range\n[3] Determine the maximum and minimum global values\n[4] Find polynomial roots in expanded form within a given range and specified approximation\n[0] Exit")
+	print("[1] Convert polynomial factors to an expanded polynomial\n[2] Generate graphs of polynomials in a specified range\n[3] Determine the maximum and minimum global values\n[4] Find polynomial roots in expanded form within a given range and specified approximation\n[5] Convert a string to a list represented polynomial\n[0] Exit")
 	user_input = input("\nEnter the number: ").replace(" ","")
 	if user_input in funkcje:
 		return funkcje[user_input]()
@@ -112,5 +112,26 @@ def funkcja4(n=0):
 			clear()
 			print("Incorrect input")
 	sub_menu(funkcja4)
-
+	
+def funkcja5(n=0):
+	clear()
+	print("Expanded polynomials: Individual monomials should be sorted in descending order; from the highest exponent to the lowest. The '^' character should be used as a power symbol. \nCorrect input: '2x^4-3', 'x^7-x^2+2', 'x^5+x^3-x+9' | Incorrect input: 'x+x^5' '2x - 4'\n")
+	print("Factored polynomials: x variable inside each parentheses should come before the constant and have no coefficient. The factored polynomial should be written as a product of first degree polynomials only.\nCorrect input: '(x-3)^3(x+1)', '(x-7)x^3(x+2)^3(x+6)^2' | Incorrect input: '(x-7)(x^2+x-1)', '2(x-1)(x+1)'\n")
+	if n ==1:
+		print("Incorrect input")
+	poly = input("Enter the polynomial:\n")
+	pars = parsing_string(poly)
+	if pars[0] == "błąd parsowania":
+		return funkcja5(1)
+	clear()
+	print(poly,"\n",*pars,"\n")
+	return sub_menu(funkcja5)
+	
+	
 main_menu()
+
+
+
+
+
+
