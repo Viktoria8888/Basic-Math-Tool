@@ -1,7 +1,7 @@
-from parsing_string import *
-from polyconvert import *
-from polynomial_roots import *
-from global_min_max import *
+from functions.parsing_string import *
+from functions.polyconvert import *
+from functions.polynomial_roots import *
+from functions.global_min_max import *
 import os
 
 def clear():
