@@ -12,7 +12,7 @@ def main_menu():
 	funkcje = {"1":funkcja1,"0":clear,"2":funkcja2,"3":funkcja3,"4":funkcja4,"5":funkcja5}
 	clear()
 	print("Which program would you like to run?\n")
-	print("[1] Convert polynomial factors to an expanded polynomial\n[2] Generate graphs of polynomials in a specified range\n[3] Determine the maximum and minimum global values\n[4] Find polynomial roots in expanded form within a given range and specified approximation\n[5] Convert a string to a list represented polynomial\n[0] Exit")
+	print("[1] Convert polynomial roots to an expanded polynomial\n[2] Generate graphs of polynomials in a specified range\n[3] Determine the maximum and minimum global values\n[4] Find polynomial roots in expanded form within a given range and specified approximation\n[5] Convert a string to a list represented polynomial\n[0] Exit")
 	user_input = input("\nEnter the number: ").replace(" ","")
 	if user_input in funkcje:
 		return funkcje[user_input]()
