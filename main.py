@@ -29,26 +29,17 @@ def sub_menu(f):
 			clear()
 	return temp_dict[choice]()
 
-def	funkcja1():
+def	funkcja1(n=0):
 	clear()
-	try:
-		n = float(input("Enter the number of polynomial roots: "))
-		if n <= 0 or n != int(n):
-			return funkcja1()
-		n = int(n)
-	except:
-		return funkcja1()
-	roots = []
-	while n>0:
-		usr_root = input("Enter the root: ")
-		try:
-			float(usr_root)
-			roots.append(float(usr_root))
-			n -= 1
-		except:
-			print("Incorrect input")
+	print("Factored polynomials: x variable inside each parentheses should come before the constant and have no coefficient. The factored polynomial should be written as a product of first degree polynomials only.\nCorrect input: '(x-3)^3(x+1)', '(x-7)x^3(x+2)^3(x+6)^2' | Incorrect input: '(x-7)(x^2+x-1)', '2(x-1)(x+1)'\n")
+	if n == 1:
+		print("Incorrect input")
+	poly = input("Enter the polynomial:\n")
+	pars = parsing_string(poly)
+	if pars[0] != "pierwiastkowo":
+		return funkcja1(1)
 	clear()
-	print(f"Basing on the roots, the expanded polynomial is:\n{[round(i,5) for i in polyconvert(roots)]}\n")
+	print(f"Basing on the roots, the expanded polynomial is:\n{[round(i,5) for i in polyconvert(pars[1])]}\n")
 	return sub_menu(funkcja1)
 
 def funkcja2():
@@ -124,7 +115,7 @@ def funkcja5(n=0):
 	if pars[0] == "błąd parsowania":
 		return funkcja5(1)
 	clear()
-	print(poly,"\n",*pars,"\n")
+	print(poly,"\n",pars[0],pars[1],"\n")
 	return sub_menu(funkcja5)
 	
 	
